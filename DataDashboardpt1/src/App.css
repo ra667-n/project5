@@ -1,0 +1,37 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom, #2a3032, #9dd4ea); /* Soft sky gradient */
+  margin: 0;
+  padding: 0;
+}
+
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.data-title {
+  color: #334cda; 
+  margin-bottom: 10px;
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 5px;
+}
+
+.data-value {
+  font-size: 1.8em;
+  color: #2e7d32; 
+  margin-bottom: 10px;
+}
+
+.data-description {
+  color: #666;
+  line-height: 1.6;
+}
+
+.loading, .error {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.2em;
+  color: #888;
+}
