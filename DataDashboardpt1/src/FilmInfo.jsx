@@ -1,7 +1,7 @@
 import React from "react";
 
 const FilmInfo = ({ ghibli, detailed }) => (
-  <div className={`film-info${detailed ? ' detailed' : ''}`}>
+  <div style={{color: '#D0a0a3'}} className={`film-info${detailed ? ' detailed' : ''}`}>
     <h3>{ghibli.title}</h3>
     <p>Release: {ghibli.release_date}</p>
     <p>Producer: {ghibli.producer}</p>

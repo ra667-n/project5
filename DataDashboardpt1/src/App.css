@@ -1,19 +1,20 @@
-
 .app-container {
   display: flex;
   min-height: 100vh;
   font-family: 'Merriweather', serif;
-  background: #e8d5bb;
   color: #7c6a5d;
+  background-image: url("https://i.pinimg.com/736x/52/3b/c9/523bc970f8d82134e90e3bbf52886fc6.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .sidebar { 
   top: 0;
   left: 0;
   width: 220px;
   height: 100vh;
-  background: #9c8a70;
+  background: #bdb5de;
   padding: 2rem 1.5rem;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   z-index: 100;
@@ -25,7 +26,7 @@
 }
 
 .sidebar a {
-  color: #f7f1e1;
+  color: #f1e9d2;
   text-decoration: none;
   margin-bottom: 1rem;
   font-weight: 600;
@@ -34,7 +35,7 @@
 }
 
 .sidebar a:hover {
-  color: #f2c94c;
+  color: #fdc623;
 }
 
 .main-content {
@@ -42,12 +43,12 @@
   padding: 2rem;
   width: calc(100% - 220px);
   box-sizing: border-box;
-  min-height: 100vh;
-  background: #f0e7db;
+  min-height: auto;
+  background: #f5e2e3;
 }
-
+@media (max-width: 768px) {
   .app-container {
-    flex-direction: column;
+    flex-direction: row;
   }
   .sidebar {
     position: relative;
@@ -65,6 +66,13 @@
     margin-left: 220px;
     width: auto;
     padding: 1rem;
+    z-index: 2;
   }
-
-
+  .overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(240, 231, 219, 0.6); 
+    z-index: 1;
+    pointer-events: none;
+  }
+}

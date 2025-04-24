@@ -9,6 +9,10 @@ const Ghibli = () => {
   const [films, setFilms] = useState([]);
   const [search, setSearch] = useState('');
   const [filterType, setFilterType] = useState('all');
+  
+  const handleSearch = () => {
+    setSearch(searchInput);
+  };
 
   useEffect(() => {
     const fetchFilms = async () => {
@@ -50,25 +54,44 @@ const Ghibli = () => {
   });
 
   return (
-    <div className="dashboard">
+    <div className="dashboard" style={{height: "100vh", maxHeight: "100vh", overflow: "auto"}}>
       
       <div style={{display: "flex", gap: "20px", justifyContent: "space-between", alignItems: "center"}}>
-        <div style={{backgroundColor: "#E0C5C4", borderRadius: "15px", padding: "20px", width: "150px"}}>
+        <div style={{backgroundColor: "#E0C5C4", borderRadius: "5px", padding: "20px", width: "150px"}}>
           <h3>Total Films</h3>
           <p>{totalFilms}</p>
         </div>
-        <div style={{backgroundColor: "#E0C5C4", borderRadius: "15px", padding: "20px", width: "150px"}}>
+        <div style={{backgroundColor: "#E0C5C4", borderRadius: "5px", padding: "20px", width: "150px"}}>
           <h3>Avg. Score</h3>
           <p>{avgScore.toFixed(1)}</p>
         </div>
-        <div style={{backgroundColor: "#E0C5C4", borderRadius: "15px", padding: "20px", width: "150px"}}>
+        <div style={{backgroundColor: "#E0C5C4", borderRadius: "5px", padding: "20px", width: "150px"}}>
           <h3>Directors</h3>
           <p>{directors.length}</p>
         </div>
       </div>
 
+     
+      <div className="controls">
+        <input style={{fontSize: "12px"}}
+          type="text"
+          placeholder="Search films..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+        />
+        <button style={{ display: 'flex', gap: '20px', padding: '4px 12px', fontSize: "12px"}} onClick={handleSearch}>Search</button>
+     
+        
+        <select onChange={e => setFilterType(e.target.value)} style={{color: '#D0a0a3'}}>
+          <option value="all">All Directors</option>
+          {directors.map(director => (
+            <option key={director} value={director}>{director}</option>
+          ))}
+        </select>
+      </div>
+
    
-      <div className="charts-container">
+      <div style={{display: "flex", gap: "10px"}}>
         <div className="chart">
           <h4>Rotten Tomatoes Scores</h4>
           <BarChart width={500} height={300} data={scoreData}>
@@ -100,32 +123,16 @@ const Ghibli = () => {
         </div>
       </div>
 
-      
-      <div className="controls">
-        <input
-          type="text"
-          placeholder="Search films..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-        />
-        
-        <select onChange={e => setFilterType(e.target.value)}>
-          <option value="all">All Directors</option>
-          {directors.map(director => (
-            <option key={director} value={director}>{director}</option>
-          ))}
-        </select>
-      </div>
-
-      <div className="film-grid">
+      <div style={{color: "#f7f1e1"}}className="film-grid">
         {filteredFilms.map(film => (
           <Link key={film.id} to={`/films/${film.id}`} className="film-card">
             <FilmInfo ghibli={film} />
           </Link>
         ))}
       </div>
-    </div>
+   </div>
+      
   );
-};
+}
 
 export default Ghibli;

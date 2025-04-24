@@ -3,13 +3,15 @@ import { Link, Outlet } from 'react-router-dom';
 
 const Layout = () => (
   <div className="app-container">
-    <nav className="sidebar">
-      <h2>Studio Ghibli</h2>
-      <Link to="/">Dashboard</Link>
+    <nav className="sidebar" style={{width:"10vw"}}>
+      <div style={{display: "flex", flexDirection: "column", gap: "30px"}}>
+        <h2>Studio Ghibli</h2>
+        <Link to="/">Dashboard</Link>
+      </div>
     </nav>
-    <main className="main-content">
+    <div style={{width: "88vw"}}>
       <Outlet />
-    </main>
+    </div>
   </div>
 );
 
